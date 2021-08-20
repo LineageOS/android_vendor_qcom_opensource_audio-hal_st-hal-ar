@@ -24,11 +24,7 @@ LOCAL_CFLAGS += -DSOUND_TRIGGER_PLATFORM=$(TARGET_BOARD_PLATFORM)
 
 LOCAL_C_INCLUDES += \
     system/media/audio_utils/include \
-    external/expat/lib \
-    vendor/qcom/opensource/core-utils/fwk-detect \
-    $(call project-path-for,qcom-audio)/pal \
-    $(call project-path-for,qcom-audio)/primary-hal/hal/audio_extn \
-    $(call project-path-for,qcom-audio)/primary-hal/hal
+    external/expat/lib
 
 LOCAL_SRC_FILES := \
     SoundTriggerDevice.cpp \
@@ -37,7 +33,9 @@ LOCAL_SRC_FILES := \
 LOCAL_HEADER_LIBRARIES := \
     libarpal_headers \
     libhardware_headers \
-    libsystem_headers
+    libsystem_headers \
+    libaudio_extn_headers \
+    libaudio_hal_headers
 
 LOCAL_SHARED_LIBRARIES := \
     libbase \
