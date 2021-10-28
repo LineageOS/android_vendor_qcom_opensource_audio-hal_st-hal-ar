@@ -688,7 +688,7 @@ int SoundTriggerSession::GetModuleVersion(char version[])
 
     status = pal_stream_get_param(pal_handle_,
         PAL_PARAM_ID_WAKEUP_MODULE_VERSION, &param_payload);
-    if (status) {
+    if (status || param_payload == NULL) {
         STHAL_ERR(LOG_TAG, "Failed to get version, status = %d", status);
         goto exit;
     }
@@ -706,6 +706,8 @@ exit:
         }
         pal_handle_ = nullptr;
     }
+    if (param_payload != NULL)
+        delete param_payload;
     STHAL_VERBOSE(LOG_TAG, "Exit");
     return 0;
 }
