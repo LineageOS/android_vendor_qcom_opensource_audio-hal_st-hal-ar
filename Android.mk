@@ -1,5 +1,6 @@
 ifneq ($(AUDIO_USE_STUB_HAL), true)
 ifeq ($(TARGET_USES_QCOM_MM_AUDIO),true)
+ifeq ($(TARGET_USES_QCOM_AUDIO_AR),true)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -55,5 +56,6 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_LSM_HIDL)),true)
 endif
 
 include $(BUILD_SHARED_LIBRARY)
+endif #TARGET_USES_QCOM_AUDIO_AR
 endif #TARGET_USES_QCOM_MM_AUDIO
 endif #AUDIO_USE_STUB_HAL
