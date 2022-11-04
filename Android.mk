@@ -45,6 +45,7 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     libar-pal
 
+ifneq ($(QCPATH),)
 ifeq ($(strip $(AUDIO_FEATURE_ENABLED_LSM_HIDL)),true)
     LOCAL_HEADER_LIBRARIES += liblisten_headers
 
@@ -54,6 +55,7 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_LSM_HIDL)),true)
 
     LOCAL_CFLAGS += -DLSM_HIDL_ENABLED
 endif
+endif #QCPATH
 
 include $(BUILD_SHARED_LIBRARY)
 endif #TARGET_USES_QCOM_AUDIO_AR
