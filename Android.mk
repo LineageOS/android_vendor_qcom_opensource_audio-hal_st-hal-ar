@@ -30,6 +30,7 @@ LOCAL_SRC_FILES := \
     SoundTriggerSession.cpp
 
 LOCAL_HEADER_LIBRARIES := \
+    libarpal_headers \
     libhardware_headers \
     libsystem_headers
 
