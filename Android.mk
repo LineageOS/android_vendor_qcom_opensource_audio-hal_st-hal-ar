@@ -5,6 +5,11 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libsoundtriggerhal.qti
+ifeq ($(SOONG_CONFIG_android_hardware_audio_run_64bit), true)
+LOCAL_MULTILIB             := 64
+else
+LOCAL_MULTILIB             := $(AUDIOSERVER_MULTILIB)
+endif
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 
