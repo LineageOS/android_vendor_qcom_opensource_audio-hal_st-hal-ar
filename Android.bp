@@ -3,6 +3,9 @@ soong_namespace {
 
 cc_library_shared {
     name: "libsoundtriggerhal.qti",
+    defaults: [
+        "android_hardware_audio_config_defaults",
+    ],
     relative_install_path: "hw",
     vendor: true,
 
