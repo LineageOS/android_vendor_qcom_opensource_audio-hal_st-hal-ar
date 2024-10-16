@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58edf37f_28f22f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34167
+      },
+      "writtenOn": "2024-10-16T08:57:29Z",
+      "side": 1,
+      "message": "Fix build error for SoundTriggerSession\n\n```\nOutput:\nIn file included from vendor/qcom/opensource/audio-hal/st-hal-ar/SoundTriggerSession.cpp:71:\nIn file included from vendor/qcom/opensource/audio-hal/st-hal-ar/SoundTriggerSession.h:74:\n\u001b[1mvendor/qcom/opensource/audio-hal/st-hal-ar/SoundTriggerPropIntf.h:37:10: \u001b[0m\u001b[0;1;31mfatal error: \u001b[0m\u001b[1m\u0027audio_extn.h\u0027 file not found\u001b[0m\n   37 | #include \"audio_extn.h\"\u001b[0m\n      | \u001b[0;1;32m         ^~~~~~~~~~~~~~\n\u001b[0m1 error generated.\n```",
+      "revId": "69b247916f6d4ab610a7290e65d31f5977b482f5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
