@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2023, 2025 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -60,6 +60,7 @@ private:
     std::atomic<int32_t> mNextUniqueHandle = 0;
     inline int32_t nextUniqueModelId() { return mNextUniqueHandle++; }
     bool mSoundTriggerInitDone = false;
+    bool mStubHal = false;
     std::unordered_map<int32_t, std::shared_ptr<SoundTriggerSession>> mSessions;
     std::mutex mMutex;
 };
