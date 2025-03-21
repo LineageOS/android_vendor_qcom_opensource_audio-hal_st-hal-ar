@@ -133,13 +133,13 @@ void SoundTriggerSession::onCallback(uint32_t *eventData)
     /*
      * Sometimes Client may call unload directly, which may get blocked in PAL when releasing
      * second stage engine thread, as it is waiting for this callback to finish. Check if session
-     * state changes to non ACTIVE state.
+     * state changes to STOPPED state.
      */
     do {
         sessionLockStatus = mSessionMutex.try_lock();
-    } while(!sessionLockStatus && isSessionActive_l());
+    } while(!sessionLockStatus && !checkSessionState_l(SessionState::STOPPED));
 
-    if (isSessionActive_l()) {
+    if (checkSessionState_l(SessionState::ACTIVE)) {
         if (palEvent->type == PAL_SOUND_MODEL_TYPE_GENERIC) {
             onRecognitionCallback_l(palEvent);
         } else {
@@ -296,7 +296,7 @@ int SoundTriggerSession::unloadSoundModel_l()
     int status = 0;
 
     STHAL_INFO(LOG_TAG, "Enter, handle %d", mSessionHandle);
-    if (isSessionActive_l()) {
+    if (checkSessionState_l(SessionState::ACTIVE)) {
         status = stopRecognition_l();
         if (status) {
             STHAL_ERR(LOG_TAG, "Failed to stop recognition, status = %d", status);
