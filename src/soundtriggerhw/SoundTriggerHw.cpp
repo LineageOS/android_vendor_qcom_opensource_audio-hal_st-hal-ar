@@ -268,12 +268,25 @@ ScopedAStatus SoundTriggerHw::stopRecognition(int32_t handle)
     return CoreUtils::halErrorToAidl(status);
 }
 
-// TODO implement this API
 ScopedAStatus SoundTriggerHw::forceRecognitionEvent(int32_t handle)
 {
-    int status = -ENOSYS;
+    int status = 0;
 
-    STHAL_INFO(LOG_TAG, "unsupported API");
+    RETURN_IF_STUB_HAL_ENABLED();
+
+    STHAL_INFO(LOG_TAG, "Enter handle %d", handle);
+
+    auto st_session = getSession(handle);
+    CHECK_VALID_SESSION(st_session, handle, STATUS_INVALID_OPERATION);
+
+    status = st_session->forceRecognitionEvent();
+    if (status != 0) {
+        STHAL_ERR(LOG_TAG, "Failed to force recognition event with handle %d, status %d",
+                                                      handle, status);
+        return CoreUtils::halErrorToAidl(status);
+    }
+
+    STHAL_INFO(LOG_TAG, "Exit handle %d, status %d", handle, status);
     return CoreUtils::halErrorToAidl(status);
 }
 

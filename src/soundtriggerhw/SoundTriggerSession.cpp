@@ -68,6 +68,12 @@ int SoundTriggerSession::stopRecognition()
     return stopRecognition_l();
 }
 
+int SoundTriggerSession::forceRecognitionEvent()
+{
+    std::lock_guard<std::mutex> lock(mSessionMutex);
+    return forceRecognitionEvent_l();
+}
+
 std::string SoundTriggerSession::getModuleVersion()
 {
     int status = 0;
@@ -367,6 +373,21 @@ int SoundTriggerSession::stopRecognition_l()
     }
 
     setSessionState_l(SessionState::STOPPED);
+
+    STHAL_INFO(LOG_TAG, "Exit, handle %d, status = %d", mSessionHandle, status);
+    return status;
+}
+
+int SoundTriggerSession::forceRecognitionEvent_l()
+{
+    int status = 0;
+
+    STHAL_INFO(LOG_TAG, "Enter, handle %d", mSessionHandle);
+
+    status = pal_stream_set_param(mPalHandle, PAL_PARAM_ID_FORCE_RECOGNITION, nullptr);
+    if (status) {
+        STHAL_ERR(LOG_TAG, "error, failed to force recognition, status = %d", status);
+    }
 
     STHAL_INFO(LOG_TAG, "Exit, handle %d, status = %d", mSessionHandle, status);
     return status;
