@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -16,13 +16,6 @@
 #include "PalApi.h"
 
 using android::OK;
-
-// NOTE: Follow same enum definition with audio hal(hal/service/Services.cpp)
-enum class StubMode {
-    STUB_DISABLED = 0,
-    STUB_ENABLED = 1 << 0,
-    AUTO_RECOVERY_ENABLED = 1 << 2,
-};
 
 //Returns retVal incase of invalid session
 #define CHECK_VALID_SESSION(session, handle, retVal)                 \
@@ -44,14 +37,13 @@ enum class StubMode {
 
 namespace aidl::android::hardware::soundtrigger3 {
 
-SoundTriggerHw::SoundTriggerHw()
+SoundTriggerHw::SoundTriggerHw(bool stubMode)
 {
     char prop_value[PROPERTY_VALUE_MAX];
 
-    STHAL_INFO(LOG_TAG, "Enter");
+    STHAL_INFO(LOG_TAG, "Enter: stubMode: %d", stubMode);
     mSoundTriggerInitDone = true;
-    property_get("vendor.audio.hal.stubmode", prop_value, "0");
-    mStubHal = (atoi(prop_value) == (int)StubMode::STUB_ENABLED);
+    mStubHal = stubMode;
 }
 
 SoundTriggerHw::~SoundTriggerHw()

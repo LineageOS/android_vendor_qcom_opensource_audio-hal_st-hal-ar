@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, 2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -15,7 +15,7 @@ using ::ndk::ScopedAStatus;
 
 class SoundTriggerHw : public BnSoundTriggerHw {
 public:
-    SoundTriggerHw();
+    SoundTriggerHw(bool stubMode);
     ~SoundTriggerHw();
 
     ScopedAStatus getProperties(Properties *aidlProperties) override;
