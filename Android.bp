@@ -1,0 +1,88 @@
+soong_namespace {
+}
+
+soong_config_module_type {
+    name: "target_board_platform_cc_library_shared",
+    module_type: "cc_library_shared",
+    config_namespace: "ANDROID",
+    value_variables: ["target_board_platform"],
+    properties: [
+        "name",
+    ],
+}
+
+target_board_platform_cc_library_shared {
+    soong_config_variables: {
+        target_board_platform: {
+            name: "sound_trigger.primary.%s",
+            conditions_default: {
+                name: "sound_trigger.primary.qcom",
+            },
+        },
+    },
+    owner: "qti",
+    relative_install_path: "hw",
+    vendor: true,
+
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ] + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
+        "true": ["-DLSM_HIDL_ENABLED"],
+        default: [],
+    }) + select(soong_config_variable("ANDROID", "target_board_platform"), {
+        any @ board_platform: ["-DSOUND_TRIGGER_PLATFORM=" + board_platform],
+        default: ["-DSOUND_TRIGGER_PLATFORM=qcom"],
+    }),
+
+    srcs: [
+        "SoundTriggerDevice.cpp",
+        "SoundTriggerSession.cpp",
+    ],
+
+    include_dirs: [
+        "system/media/audio_utils/include",
+        "external/expat/lib",
+    ],
+
+    header_libs: [
+        "libhardware_headers",
+        "libsystem_headers",
+    ] + select(soong_config_variable("qtiaudio", "headers_namespace"), {
+        any @ value: [
+            "//" + value + ":libaudio_extn_headers",
+            "//" + value + ":libaudio_hal_headers",
+        ],
+        default: [],
+    }) + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
+        "true": ["liblisten_headers"],
+        default: [],
+    }),
+
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libcutils",
+        "libdl",
+        "libaudioutils",
+        "libexpat",
+        "libhidlbase",
+        "libprocessgroup",
+        "libutils",
+    ] + select(soong_config_variable("qtiaudio", "libarpal_namespace"), {
+        any @ value: ["//" + value + ":libar-pal"],
+        default: [],
+    }) + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
+        "true": [
+            "vendor.qti.hardware.ListenSoundModel@1.0-impl",
+            "vendor.qti.hardware.ListenSoundModel@1.0",
+        ],
+        default: [],
+    }),
+}
