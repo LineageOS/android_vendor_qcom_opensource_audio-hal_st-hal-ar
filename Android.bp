@@ -40,8 +40,8 @@ target_board_platform_cc_library_shared {
         "true": [],
         default: [],
     }) + select(soong_config_variable("ANDROID", "target_board_platform"), {
-        any @ board_platform: ["-DSOUND_TRIGGER_PLATFORM=\"" + board_platform + "\""],
-        default: ["-DSOUND_TRIGGER_PLATFORM=\"qcom\""],
+        any @ board_platform: ["-DSOUND_TRIGGER_PLATFORM=" + board_platform + ""],
+        default: ["-DSOUND_TRIGGER_PLATFORM=qcom"],
     }),
 
     srcs: [
