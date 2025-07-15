@@ -37,7 +37,7 @@ target_board_platform_cc_library_shared {
         "-Wall",
         "-Werror",
     ] + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
-        "true": ["-DLSM_HIDL_ENABLED"],
+        "true": [],
         default: [],
     }) + select(soong_config_variable("ANDROID", "target_board_platform"), {
         any @ board_platform: ["-DSOUND_TRIGGER_PLATFORM=\"" + board_platform + "\""],
@@ -65,7 +65,7 @@ target_board_platform_cc_library_shared {
         ],
         default: [],
     }) + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
-        "true": ["liblisten_headers"],
+        "true": [],
         default: [],
     }),
 
@@ -83,10 +83,7 @@ target_board_platform_cc_library_shared {
         any @ value: ["//" + value + ":libar-pal"],
         default: [],
     }) + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
-        "true": [
-            "vendor.qti.hardware.ListenSoundModel@1.0-impl",
-            "vendor.qti.hardware.ListenSoundModel@1.0",
-        ],
+        "true": [],
         default: [],
     }),
 }
