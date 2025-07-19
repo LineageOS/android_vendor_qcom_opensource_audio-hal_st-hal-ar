@@ -16,6 +16,24 @@
       "message": "This is still needed to fix sm8450/sm8550 build, due to the way we set the namespaces it\u0027s not able to find libar-pal",
       "revId": "7b4b47c42b2bda25da40b626e89c18afdadadc4a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453ffc96_ba840d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-07-19T08:23:05Z",
+      "side": 1,
+      "message": "Alright, I was wondering that, but Luk also yolo merged it on lineage-22.2-caf-sm8750 branch.",
+      "parentUuid": "209a8dd7_fb9d01c9",
+      "revId": "7b4b47c42b2bda25da40b626e89c18afdadadc4a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
