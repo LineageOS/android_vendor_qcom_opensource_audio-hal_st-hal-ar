@@ -57,7 +57,7 @@ target_board_platform_cc_library_shared {
     header_libs: [
         "libhardware_headers",
         "libsystem_headers",
-    ] + select(soong_config_variable("qtiaudio", "headers_namespace"), {
+    ] + select(soong_config_variable("qtiaudio", "legacy_headers_namespace"), {
         any @ value: [
             "//" + value + ":libarpal_headers",
             "//" + value + ":libaudio_extn_headers",
@@ -79,7 +79,7 @@ target_board_platform_cc_library_shared {
         "libhidlbase",
         "libprocessgroup",
         "libutils",
-    ] + select(soong_config_variable("qtiaudio", "libarpal_namespace"), {
+    ] + select(soong_config_variable("qtiaudio", "legacy_libarpal_namespace"), {
         any @ value: ["//" + value + ":libar-pal"],
         default: [],
     }) + select(soong_config_variable("qtiaudio", "feature_lsm_hidl"), {
