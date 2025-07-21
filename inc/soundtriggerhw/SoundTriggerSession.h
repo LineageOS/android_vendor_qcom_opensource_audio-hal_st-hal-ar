@@ -59,7 +59,7 @@ private:
                            uint32_t event_size, uint64_t cookie);
     void setSessionState_l(SessionState state) { mSessionState = state; }
     SessionState getSessionState() { return mSessionState; }
-    bool isSessionActive_l() { return mSessionState == SessionState::ACTIVE; }
+    bool checkSessionState_l(SessionState state) { return mSessionState == state; }
 
     SoundModelHandle mSessionHandle;
     std::mutex mSessionMutex;
