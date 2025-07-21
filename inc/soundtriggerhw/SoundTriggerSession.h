@@ -39,6 +39,7 @@ public:
     int startRecognition(int32_t deviceHandle, int32_t ioHandle,
                          const RecognitionConfig &config);
     int stopRecognition();
+    int forceRecognitionEvent();
     std::string getModuleVersion();
     SoundModelHandle getSessionHandle() { return mSessionHandle; }
 
@@ -50,6 +51,7 @@ private:
     int startRecognition_l(int32_t deviceHandle, int32_t ioHandle,
                            const RecognitionConfig &config);
     int stopRecognition_l();
+    int forceRecognitionEvent_l();
     void onCallback(uint32_t *eventData);
     void onRecognitionCallback_l(struct pal_st_recognition_event *palEvent);
     void onPhraseRecognitionCallback_l(struct pal_st_phrase_recognition_event *palPhraseEvent);
