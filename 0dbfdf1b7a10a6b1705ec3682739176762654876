@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e257e4_88a6e96b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-07-21T23:00:16Z",
+      "side": 1,
+      "message": "Instead of disabling the feature (https://review.lineageos.org/c/LineageOS/android_device_oneplus_sm8550-common/+/437455/1) devices can simply provide the blobs, something that couldn\u0027t be achieved with Android.mk.",
+      "revId": "0dbfdf1b7a10a6b1705ec3682739176762654876",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
