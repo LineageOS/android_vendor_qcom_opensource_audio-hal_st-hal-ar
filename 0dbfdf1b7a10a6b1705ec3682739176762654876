@@ -50,6 +50,24 @@
       "message": "Don\u0027t we just need to reverse vendor.qti.hardware.ListenSoundModel@1.0 interface?",
       "revId": "0dbfdf1b7a10a6b1705ec3682739176762654876",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b5c0cf_a2ec274f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-07-22T11:24:36Z",
+      "side": 1,
+      "message": "That would be feasible, the main problem is missing lsm_server_wrapper.h, at least.",
+      "parentUuid": "bcac78f3_b3b73914",
+      "revId": "0dbfdf1b7a10a6b1705ec3682739176762654876",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
