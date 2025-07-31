@@ -229,7 +229,7 @@ int SoundTriggerSession::configurePALSession_l(const SoundModel &model,
     stream = CoreUtils::getStreamType(model);
     status = openPALStream(stream);
     if (status) {
-        STHAL_ERR(LOG_TAG, " error, failed to open PAL stream");
+        STHAL_ERR(LOG_TAG, "error, failed to open PAL stream");
         goto exit;
     }
 
@@ -238,6 +238,13 @@ int SoundTriggerSession::configurePALSession_l(const SoundModel &model,
                                   PAL_PARAM_ID_LOAD_SOUND_MODEL,
                                   paramPayload);
 
+    if (status) {
+        /* close stream if load fails in case sound trigger
+           framework does not reboot hal immediately*/
+        STHAL_ERR(LOG_TAG, "Failed to load sound model, close stream");
+        pal_stream_close(mPalHandle);
+        mPalHandle = nullptr;
+    }
 exit:
     STHAL_INFO(LOG_TAG, "Exit, status = %d", status);
     return status;
