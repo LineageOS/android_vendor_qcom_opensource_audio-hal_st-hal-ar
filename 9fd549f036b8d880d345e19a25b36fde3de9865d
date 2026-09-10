@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0ce50c_d83a9753",
+        "filename": "src/soundtriggerhw/SoundTriggerSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 24438
+      },
+      "writtenOn": "2026-09-10T21:22:28Z",
+      "side": 0,
+      "message": "https://github.com/AudioReach/audioreach-pal/blob/4259f9aeda8c01be81afad7fd95bc40463924d9e/inc/PalDefs.h#L896\n\nI guess we can somehow make use of this?",
+      "range": {
+        "startLine": 394,
+        "startChar": 46,
+        "endLine": 394,
+        "endChar": 76
+      },
+      "revId": "9fd549f036b8d880d345e19a25b36fde3de9865d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
