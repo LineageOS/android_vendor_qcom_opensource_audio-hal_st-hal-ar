@@ -22,6 +22,30 @@
       },
       "revId": "9fd549f036b8d880d345e19a25b36fde3de9865d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfca756b_c139fd08",
+        "filename": "src/soundtriggerhw/SoundTriggerSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2026-09-14T14:01:25Z",
+      "side": 0,
+      "message": "no.",
+      "parentUuid": "3a0ce50c_d83a9753",
+      "range": {
+        "startLine": 394,
+        "startChar": 46,
+        "endLine": 394,
+        "endChar": 76
+      },
+      "revId": "9fd549f036b8d880d345e19a25b36fde3de9865d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
