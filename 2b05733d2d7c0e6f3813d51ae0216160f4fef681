@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e037b8a_b555999f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2026-09-14T15:14:55Z",
+      "side": 1,
+      "message": "breakfast pdx257; m libsoundtriggerhal.qti passes",
+      "revId": "2b05733d2d7c0e6f3813d51ae0216160f4fef681",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
