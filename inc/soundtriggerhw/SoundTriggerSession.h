@@ -51,6 +51,7 @@ private:
     int startRecognition_l(int32_t deviceHandle, int32_t ioHandle,
                            const RecognitionConfig &config);
     int stopRecognition_l();
+    template <typename T = pal_param_id_type_t>
     int forceRecognitionEvent_l();
     void onCallback(uint32_t *eventData);
     void onRecognitionCallback_l(struct pal_st_recognition_event *palEvent);

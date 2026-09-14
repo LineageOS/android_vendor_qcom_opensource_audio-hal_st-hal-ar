@@ -385,15 +385,20 @@ int SoundTriggerSession::stopRecognition_l()
     return status;
 }
 
+template <typename T>
 int SoundTriggerSession::forceRecognitionEvent_l()
 {
     int status = 0;
 
     STHAL_INFO(LOG_TAG, "Enter, handle %d", mSessionHandle);
 
-    status = pal_stream_set_param(mPalHandle, PAL_PARAM_ID_FORCE_RECOGNITION, nullptr);
-    if (status) {
-        STHAL_ERR(LOG_TAG, "error, failed to force recognition, status = %d", status);
+    if constexpr (requires { T::PAL_PARAM_ID_FORCE_RECOGNITION; }) {
+        status = pal_stream_set_param(mPalHandle, T::PAL_PARAM_ID_FORCE_RECOGNITION, nullptr);
+        if (status) {
+            STHAL_ERR(LOG_TAG, "error, failed to force recognition, status = %d", status);
+        }
+    } else {
+        status = -ENOSYS;
     }
 
     STHAL_INFO(LOG_TAG, "Exit, handle %d, status = %d", mSessionHandle, status);
